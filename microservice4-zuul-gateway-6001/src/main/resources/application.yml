@@ -1,0 +1,23 @@
+server:
+  port: 6001
+
+spring:
+  application:
+    name: microservice4-zuul-6001
+
+eureka:
+  instance:
+    prefer-ip-address: true
+    instance-id: microservice4-zuul
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://eureka7001.com:7001/eureka/,http://eureka7002.com:7002/eureka/,http://eureka7003.com:7003/eureka/
+
+zuul:
+  prefix: /ss
+  ignored-services: "*"
+  routes:
+    mydept.serviceId: microservice4-consumer
+    mydept.path: /mydept/**

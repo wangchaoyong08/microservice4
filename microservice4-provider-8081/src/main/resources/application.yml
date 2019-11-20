@@ -1,0 +1,26 @@
+server:
+  port: 8081
+
+spring:
+  application:
+    name: microservice4-provider
+  datasource:
+    username: root
+    password: root
+    url: jdbc:mysql://localhost:3306/db
+    driver-class-name: com.mysql.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+
+mybatis:
+  mapper-locations: classpath:mapper/**/*.xml
+  type-aliases-package: com.wcy.microservice4.beans
+
+eureka:
+  instance:
+    prefer-ip-address: true
+    instance-id: microservice4-provider-8081
+  client:
+    register-with-eureka: true
+    fetch-registry: false
+    service-url:
+      defaultZone: http://eureka7001.com:7001/eureka/,http://eureka7002.com:7002/eureka/,http://eureka7003.com:7003/eureka/
